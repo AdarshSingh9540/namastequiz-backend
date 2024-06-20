@@ -10,9 +10,9 @@ app.use(bodyParser.json());
 app.use(cors()); 
 
 
-app.use("/",(req,res) =>{
-  res.json({msg:"HI Gi=uys thisi aagujhgifh"})
-})
+// app.use("/",(req,res) =>{
+//   res.json({msg:"HI Gi=uys thisi aagujhgifh"})
+// })
 
 const questionRoutes = require('./routes/route');
 const sign = require('./routes/user')
