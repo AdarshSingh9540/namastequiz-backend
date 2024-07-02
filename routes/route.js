@@ -27,7 +27,7 @@ const generateMCQQuestions = async (topic) => {
 
   const response = await axios.post('https://snapt-indol.vercel.app/api', {
     "id":"Prajjwal#4793@delhi?QA",
-    "topic": topic
+    "message": message
   });
 
   if (response.data) {
