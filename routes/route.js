@@ -23,7 +23,7 @@ const generateMCQQuestions = async (topic) => {
   ]`;
 
   try {
-    const response = await axios.post('https://ai-mu-two.vercel.app', { message }, {
+    const response = await axios.post('https://ai-mu-two.vercel.app/chat', { message }, {
       headers: {
         'Content-Type': 'application/json'
       }
