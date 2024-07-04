@@ -17,7 +17,7 @@ app.use(cors());
 const questionRoutes = require('./routes/route');
 const sign = require('./routes/user')
 
-app.use('/api', questionRoutes);
+app.use('/', questionRoutes);
 app.use('/api/auth',sign);
 
 app.listen(port, () => {

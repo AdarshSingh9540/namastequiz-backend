@@ -3,41 +3,43 @@ const axios = require('axios');
 const router = express.Router();
 
 const generateMCQQuestions = async (topic) => {
-  const message = `You are given with a topic and you have to generate 5 questions with their multiple choice options. the topic is "${topic}". You have to follow the response format like this
+  const message = `You are given with a topic and you have to generate 5 questions with their multiple choice options. The topic is "${topic}". You have to follow the response format like this
   [
     {
-      "Question": "first question",
+      "Question": "First question",
       "Options": ["Option1", "Option2", "Option3", "Option4"],
-      "answer":"ans"
+      "answer": "ans"
     },
     {
       "Question": "Second question",
       "Options": ["Option1", "Option2", "Option3", "Option4"],
-      "answer":"ans"
+      "answer": "ans"
     },
     {
       "Question": "Third question",
       "Options": ["Option1", "Option2", "Option3", "Option4"],
-      "answer":"ans"
+      "answer": "ans"
     }
-  ]
+  ]`;
 
-  Don't include anything else in your response except the questions. Response should be such that I can use it with .map function of JavaScript.
-  `;
+  try {
+    const response = await axios.post('https://ai-mu-two.vercel.app', { message }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-  const response = await axios.post('https://snapt-indol.vercel.app/api', {
-    "id":"Prajjwal#4793@delhi?QA",
-    "message": message
-  });
-
-  if (response.data) {
-    return response.data;
-  } else {
-    throw new Error('Failed to generate response!');
+    if (response.data) {
+      return response.data;
+    } else {
+      throw new Error('Failed to generate response!');
+    }
+  } catch (error) {
+    throw new Error('Failed to fetch questions');
   }
 };
 
-router.post('/post/question', async (req, res) => {
+router.post('/chat', async (req, res) => {
   const { topic } = req.body;
 
   if (!topic) {
