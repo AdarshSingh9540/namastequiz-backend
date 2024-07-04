@@ -39,7 +39,7 @@ const generateMCQQuestions = async (topic) => {
   }
 };
 
-router.post('/chat', async (req, res) => {
+router.post('/', async (req, res) => {
   const { topic } = req.body;
 
   if (!topic) {
